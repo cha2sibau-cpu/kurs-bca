@@ -37,6 +37,17 @@ npm start
 
 Then open <http://localhost:3000>. Change the port with `PORT=8080 npm start`.
 
+### One-click launch (macOS)
+
+After the one-time `npm install` above, just **double-click `Kurs BCA.command`**
+in Finder. It starts the server (if it isn't already running) and opens the app
+in your browser — no terminal typing needed. A small terminal window stays open
+while the app runs; close it (or press Ctrl+C) to stop the server.
+
+Tip: drag `Kurs BCA.command` to the Finder sidebar or your Dock for quick
+access. If macOS blocks it the first time, right-click → **Open** once to
+approve it.
+
 ## How the rate is picked
 
 BCA's USD row has three columns (each Jual/Beli): **e-Rate**, **TT Counter**,
