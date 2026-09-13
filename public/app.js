@@ -17,6 +17,9 @@ const idr = new Intl.NumberFormat("id-ID", {
   maximumFractionDigits: 2,
 });
 
+// USD input amount — up to 2 decimals, no forced trailing zeros.
+const amt = new Intl.NumberFormat("id-ID", { maximumFractionDigits: 2 });
+
 let kursJual = null; // latest USD e-Rate Jual
 
 /** Parse the USD text input into a Number (accepts "100", "100.5", "100,5"). */
@@ -31,10 +34,10 @@ function parseUsd(str) {
   return Number.isFinite(n) ? n : 0;
 }
 
-/** Timestamp in the required "YYYYMMDD HH:MM" format (local time). */
+/** Timestamp in "DD/MM/YY HH:MM" format (local time). */
 function stamp(d) {
   const p = (n) => String(n).padStart(2, "0");
-  return `${d.getFullYear()}${p(d.getMonth() + 1)}${p(d.getDate())} ${p(
+  return `${p(d.getDate())}/${p(d.getMonth() + 1)}/${p(d.getFullYear() % 100)} ${p(
     d.getHours()
   )}:${p(d.getMinutes())}`;
 }
@@ -92,13 +95,13 @@ async function copyResult() {
   const usd = parseUsd(els.usd.value);
   if (kursJual == null || usd <= 0) return;
 
-  const base = usd * kursJual;
-  const withRate = base * RATE_MARKUP;
+  const converted = usd * kursJual * RATE_MARKUP; // includes 1.01% BCA markup
 
   const text =
-    `${stamp(new Date())}\n` +
-    `${idr.format(base)}\n` +
-    `With BCA Rate 1.01% ${idr.format(withRate)}`;
+    `Input Amount: USD ${amt.format(usd)}\n` +
+    `Current BCA Rate: ${idr.format(kursJual)}\n` +
+    `Converted Amount: Rp ${idr.format(converted)}\n` +
+    `Date & Time: ${stamp(new Date())}`;
 
   try {
     if (navigator.clipboard && window.isSecureContext) {

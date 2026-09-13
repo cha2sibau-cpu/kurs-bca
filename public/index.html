@@ -13,14 +13,16 @@
           <h1>Kurs BCA</h1>
           <p class="sub">USD → IDR · e-Rate (Kurs Jual)</p>
         </div>
-        <button id="refresh" class="btn-refresh" title="Ambil data terbaru">
-          <span class="spin-icon">⟳</span> Refresh
-        </button>
       </header>
 
       <section class="rate-card">
         <div class="rate-label">Kurs Jual USD (e-Rate)</div>
-        <div id="rate" class="rate-value">—</div>
+        <div class="rate-row">
+          <div id="rate" class="rate-value">—</div>
+          <button id="refresh" class="btn-refresh" title="Ambil data terbaru">
+            <span class="spin-icon">⟳</span> Refresh
+          </button>
+        </div>
         <div id="status" class="status">Memuat kurs terbaru…</div>
       </section>
 
