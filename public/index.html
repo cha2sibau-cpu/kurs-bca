@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kurs BCA — USD Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="head">
+        <div>
+          <h1>Kurs BCA</h1>
+          <p class="sub">USD → IDR · e-Rate (Kurs Jual)</p>
+        </div>
+        <button id="refresh" class="btn-refresh" title="Ambil data terbaru">
+          <span class="spin-icon">⟳</span> Refresh
+        </button>
+      </header>
+
+      <section class="rate-card">
+        <div class="rate-label">Kurs Jual USD (e-Rate)</div>
+        <div id="rate" class="rate-value">—</div>
+        <div id="status" class="status">Memuat kurs terbaru…</div>
+      </section>
+
+      <section class="calc">
+        <label for="usd" class="calc-label">Jumlah USD</label>
+        <div class="input-wrap">
+          <span class="prefix">$</span>
+          <input
+            id="usd"
+            type="text"
+            inputmode="decimal"
+            placeholder="0.00"
+            autocomplete="off"
+          />
+        </div>
+
+        <div class="result">
+          <div class="result-label">Base Conversion</div>
+          <div id="base" class="base-value">—</div>
+          <div id="withRate" class="rate-plus">With BCA Rate 1.01% —</div>
+        </div>
+
+        <button id="copy" class="btn-copy">Copy</button>
+        <div id="copied" class="copied" hidden>Copied to clipboard ✓</div>
+      </section>
+
+      <footer class="foot">
+        <span id="fetched"></span>
+        <a href="https://www.bca.co.id/id/informasi/kurs" target="_blank" rel="noopener"
+          >Sumber: bca.co.id</a
+        >
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

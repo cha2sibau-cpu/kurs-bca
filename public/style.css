@@ -1,0 +1,227 @@
+:root {
+  --bg: #f4f5f7;
+  --card: #ffffff;
+  --text: #16202c;
+  --muted: #6b7683;
+  --border: #e3e6ea;
+  --accent: #0060af; /* BCA blue */
+  --accent-dark: #004a89;
+  --ok: #1a7f4b;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f141a;
+    --card: #1a222c;
+    --text: #eef2f6;
+    --muted: #9aa6b2;
+    --border: #2a3540;
+    --accent: #3f9be8;
+    --accent-dark: #2b7fc9;
+    --ok: #4fd18a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 20px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.sub {
+  margin: 2px 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.btn-refresh {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-refresh:hover {
+  background: var(--accent-dark);
+}
+
+.btn-refresh:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.btn-refresh.loading .spin-icon {
+  display: inline-block;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rate-card,
+.calc {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.rate-label,
+.calc-label,
+.result-label {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.rate-value {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+.status {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 6px;
+  min-height: 1.1em;
+}
+
+.status.error {
+  color: #d3372b;
+}
+
+.calc {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0 14px;
+  background: var(--bg);
+}
+
+.input-wrap:focus-within {
+  border-color: var(--accent);
+}
+
+.prefix {
+  color: var(--muted);
+  font-size: 1.2rem;
+  margin-right: 8px;
+}
+
+#usd {
+  flex: 1;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.4rem;
+  padding: 12px 0;
+  outline: none;
+  width: 100%;
+}
+
+.result {
+  border-top: 1px dashed var(--border);
+  padding-top: 12px;
+}
+
+.base-value {
+  font-size: 2.3rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-top: 2px;
+  word-break: break-word;
+}
+
+.rate-plus {
+  color: var(--muted);
+  font-size: 1rem;
+  margin-top: 6px;
+}
+
+.btn-copy {
+  background: var(--text);
+  color: var(--card);
+  border: none;
+  border-radius: 10px;
+  padding: 13px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-copy:active {
+  transform: scale(0.99);
+}
+
+.btn-copy:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.copied {
+  color: var(--ok);
+  font-size: 0.85rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+}
+
+.foot a {
+  color: var(--accent);
+  text-decoration: none;
+}
