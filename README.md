@@ -48,6 +48,19 @@ Tip: drag `Kurs BCA.command` to the Finder sidebar or your Dock for quick
 access. If macOS blocks it the first time, right-click → **Open** once to
 approve it.
 
+### True app icon, no terminal (macOS)
+
+For a real app icon you can keep in the Dock that launches with **no visible
+terminal**, double-click **`Build Mac App.command`** once. It compiles
+`Kurs BCA.app` (into `/Applications`, or `~/Applications`) with your Node and
+project paths baked in, then reveals it in Finder so you can drag it to the
+Dock. From then on, one click launches the server in the background and opens
+the browser.
+
+The background server keeps running after launch. To stop it:
+`pkill -f "server.js"`. Re-run `Build Mac App.command` if you move the project
+folder or change your Node version.
+
 ## How the rate is picked
 
 BCA's USD row has three columns (each Jual/Beli): **e-Rate**, **TT Counter**,
