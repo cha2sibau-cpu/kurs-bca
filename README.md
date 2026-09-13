@@ -24,6 +24,10 @@ tiny Node server scrapes the page server-side and exposes a clean
 `GET /api/kurs` endpoint. The frontend is a static page served by the same
 server.
 
+The server uses **only Node's built-in modules** — no npm dependencies — so
+`npm install` pulls nothing and there's nothing to keep up to date. Needs
+**Node 18+** (for the built-in `fetch`).
+
 ## Run
 
 ```bash
