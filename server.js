@@ -25,9 +25,9 @@ function parseIdNumber(raw) {
 
 /**
  * Extract the USD rates from BCA's kurs page HTML (no HTML-parser dependency).
- * BCA's USD row columns, in order:
- *   Mata Uang | e-Rate (Jual | Beli) | TT Counter (Jual | Beli) | Bank Notes (Jual | Beli)
- * so the first number in the row is e-Rate Jual.
+ * BCA's USD row columns, in order (Beli comes BEFORE Jual):
+ *   Mata Uang | e-Rate (Beli | Jual) | TT Counter (Beli | Jual) | Bank Notes (Beli | Jual)
+ * so the SECOND number in the row is e-Rate Jual.
  */
 function extractUsd(html) {
   const stripTags = (s) =>
@@ -68,12 +68,12 @@ function extractUsd(html) {
   if (!nums.length) return null;
 
   return {
-    eRateJual: nums[0] ?? null,
-    eRateBeli: nums[1] ?? null,
-    ttCounterJual: nums[2] ?? null,
-    ttCounterBeli: nums[3] ?? null,
-    bankNotesJual: nums[4] ?? null,
-    bankNotesBeli: nums[5] ?? null,
+    eRateBeli: nums[0] ?? null,
+    eRateJual: nums[1] ?? null,
+    ttCounterBeli: nums[2] ?? null,
+    ttCounterJual: nums[3] ?? null,
+    bankNotesBeli: nums[4] ?? null,
+    bankNotesJual: nums[5] ?? null,
     allNumbers: nums,
   };
 }
